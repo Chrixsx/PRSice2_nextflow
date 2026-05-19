@@ -4,17 +4,18 @@ nextflow.enable.dsl=2
 // ---------------------------------------------------------------------------
 // Parameters — override on the command line with --param value
 // ---------------------------------------------------------------------------
-params.traits_file = "traits.txt"
+params.traits_file = "/vast/projects/Epilepsy_Metabolites/scripts/PRSice2/prsice2_nextflow/traits.txt"
 params.suffix      = "_Karjalainen2024_reformatted_prsice2.tsv.gz"
 params.cohort      = "ERC_Dec2025"
 
 // Step toggle flags
 params.run_reformat = true
-params.run_prsice   = true
+params.run_prsice   = false
 
 // Paths
 params.gwas_dir  = "/vast/projects/Epilepsy_Metabolites/data/Karjalainen_2024/original"
 params.sumstats  = "/vast/scratch/users/le.c/Kajarlainen2024/reformatted_prsice2"
+
 params.app       = "/vast/projects/Epilepsy_Metabolites/scripts/PRSice2/app"
 params.plink     = "/vast/projects/Epilepsy_Metabolites/scripts/prsCS/prs_metab_GSA_Dec2025/data/imputted_GSA_SNP_Dec2025/EUR_only_gsa_QC3_maf_0.001"
 params.outdir    = "/vast/projects/Epilepsy_Metabolites/scripts/PRSice2/prs_metab_GSA_Dec2025/2.output"
@@ -40,6 +41,7 @@ process REFORMAT_GWAS {
     Rscript ${projectDir}/bin/reformat_gwas.R "${in_file}" "${out_file}"
     """
 }
+
 
 // ---------------------------------------------------------------------------
 // Step 2: Polygenic risk scores with PRSice2
