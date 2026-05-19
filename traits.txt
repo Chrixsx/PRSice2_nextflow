@@ -1,0 +1,4 @@
+# One trait name per line (no suffix, no spaces). Lines starting with # are ignored.
+Citrate
+CLA
+# add your remaining 900+ traits below...
